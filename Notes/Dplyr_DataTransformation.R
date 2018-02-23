@@ -67,5 +67,3 @@ df %>% group_by(year, month, day) %>% summarise(flights = n())
 
 # counts number of flights for every month of a year
 df %>% group_by(year, month) %>% summarise(flights = n())
-
-
