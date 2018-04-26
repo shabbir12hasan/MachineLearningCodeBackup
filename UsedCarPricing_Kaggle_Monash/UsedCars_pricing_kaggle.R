@@ -1,3 +1,10 @@
+#importing libraries
+library(dplyr)
+library(mice)
+library(e1071)
+library(ggplot2)
+
+
 # This file contain code for kaggle competition, based on data set contatining car selling data.
 # Task predict price for car models.
 
@@ -5,7 +12,7 @@
 # Loading the training data
 train <- read.csv("kaggle/Usedcars_monash/train.csv")
 
-# taking out the price from train data and storing it
+# taking out the price variable from train data and storing it
 train_price <- train['price']
 train <- train[-2]
 
@@ -29,8 +36,6 @@ postalCode_values <- data$postalCode
 data <- data[-10]
 head(data)
 
-
-
 #Checking for missing values
 md.pattern(data)
 #missing percentage check
@@ -41,7 +46,6 @@ apply(data,1,pMiss)
 
 ######Imputation
 #imputing missing values, using mice library
-library(mice)
 to_impute<-as.data.frame(data)
 columns_navalues <- colnames(data)[ apply(data, 2, anyNA) ]
 impute=data[columns_navalues]
@@ -58,6 +62,16 @@ train_set <- to_impute
 
 
 # Future Engineering
+
+
+#inspecting model of cars
+ggplot(train_set, aes(model))+geom_bar(aes(fill=vehicleType))
+#inspecting postal code
+ggplot(train_set, aes(postalCode)) + geom_bar(binwidth = 50, aes(fill=vehicleType))
+unique(train_set$postalCode)
+summary(train_set$yearOfRegistration)
+train_set[train_set$yearOfRegistration < 1975, ]
+ggplot(train_set, aes(yearOfRegistration)) + geom_bar(aes(fill=vehicleType))
 
 #creating new column for PS
 newPowerPS <-  train_set$powerPS
@@ -116,7 +130,19 @@ train_set$caragelog <- caragelog
 head(train_set)
 str(train_set)
 
+##fucntion to impute fule values##
+unique(train_set$fuelType)
+train_set$fuelType <- sapply(train_set$fuelType, fuelchange)
+unique(testfun$new)
 
+fuelchange <- function(x){
+  if (x == "diesel") {
+    return ("diesel")
+  } else if (x == "petrol"){
+    return ("petrol")
+  } else { 
+    return ("other") }
+}
 
 ########seperating data sets
 train_x <- train_set[1:218912,]
@@ -156,7 +182,6 @@ write.table(submission, "subLM21.csv", sep=",", row.names=FALSE)
 
 # Applying tuned SVM
 ############# tuned SVM
-library(e1071)
 #tuned.svm <- svm(train_z$price ~ ., data=train_z, kernel="radial",  cost=1, gamma=0.5)
 tuned.svm <- svm(train_z$price ~ ., data=train_z, kernel="sigmoid", degree = 3, cost=1, gamma=0.3)
 summary(tuned.svm)
