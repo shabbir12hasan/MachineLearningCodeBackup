@@ -735,6 +735,20 @@ players <- rbind(arsenal_data, Boremouth_data, Burnley_data, Chelsea_data, Cryst
                  Sunderland_data, Swansea_City_data, Tottenham_data, Watford_data,
                  West_Brom_data, West_Ham_data)
 
+
+########### Rounding off players height to 2 decimal
+players$Height <- as.numeric(players$Height)
+players$Height <- round(players$Height, 2)
+
+########### Converting weight to numeric
+players$Weight <- as.numeric(players$Weight)
+
+########## Calculating BMI of players
+players$BMI <- (players$Weight / players$Height^2)
+
+######### Removing previous club
+players <- players[,-7]
+
 View(players)
 
 # writing data in disk
@@ -744,7 +758,24 @@ View(players)
 
 #Creating plot for number of players from different countries
 ggplot(players, aes(players$Nat)) + geom_bar()
+
 # England has most number of players, therefore its diffiult to see plots for other countries,
 # we will plot for countries other than england
 players_noengland <- players[players$Nat!="ENG",]
-ggplot(players_noengland, aes(players_noengland$Nat)) + geom_bar(aes(fill=players_noengland$Nat)) + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+international_players <- ggplot(players_noengland, aes(players_noengland$Nat)) + geom_bar(aes(fill=players_noengland$Nat))
+international_players <-  international_players + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+# Players height
+ggplot(players, aes(players$Height)) + geom_histogram()
+
+# Players weight
+ggplot(players, aes(players$Weight)) + geom_histogram()
+
+# comparing height and weight ratio
+ggplot(players, aes(x=players$Weight, y=players$Height)) + geom_point()
+
+#Plotting BMI
+ggplot(players, aes(players$BMI)) + geom_histogram()
+
+players[players$BMI>25,]
+
