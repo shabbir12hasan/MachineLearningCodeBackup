@@ -1,6 +1,7 @@
 # calling libraries
 library(readxl)
 library(ggplot2)
+library(lubridate)
 
 ############### importing and cleaning data files #######################
 #encoding = "UTF-16" for special character
@@ -749,6 +750,17 @@ players$BMI <- (players$Weight / players$Height^2)
 ######### Removing previous club
 players <- players[,-7]
 
+######### calculating age
+calc_age <- function(birthDate, refDate) {
+  period <- as.period(new_interval(birthDate, refDate), unit = "year")
+  period$year
+}
+
+calc_age("1990-04-30", "2017-04-30")   # Calculate age at any date
+
+
+
+
 View(players)
 
 # writing data in disk
@@ -778,4 +790,9 @@ ggplot(players, aes(x=players$Weight, y=players$Height)) + geom_point()
 ggplot(players, aes(players$BMI)) + geom_histogram()
 
 players[players$BMI>25,]
+
+#number of players in position
+ggplot(players, aes(players$Pos)) + geom_bar()
+
+
 
