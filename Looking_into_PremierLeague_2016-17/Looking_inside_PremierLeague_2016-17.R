@@ -1,7 +1,6 @@
 # calling libraries
-#install.packages("pdftools")
 library(readxl)
-
+library(ggplot2)
 
 ############### importing and cleaning data files #######################
 #encoding = "UTF-16" for special character
@@ -737,3 +736,15 @@ players <- rbind(arsenal_data, Boremouth_data, Burnley_data, Chelsea_data, Cryst
                  West_Brom_data, West_Ham_data)
 
 View(players)
+
+# writing data in disk
+# write.csv(players, file = "PL_payers_16-17")
+
+#########################Data Viz##################
+
+#Creating plot for number of players from different countries
+ggplot(players, aes(players$Nat)) + geom_bar()
+# England has most number of players, therefore its diffiult to see plots for other countries,
+# we will plot for countries other than england
+players_noengland <- players[players$Nat!="ENG",]
+ggplot(players_noengland, aes(players_noengland$Nat)) + geom_bar(aes(fill=players_noengland$Nat)) + theme(axis.text.x = element_text(angle = 90, hjust = 1))
