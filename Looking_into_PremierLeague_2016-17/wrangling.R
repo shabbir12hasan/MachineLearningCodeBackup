@@ -39,7 +39,7 @@ arsenal_data$Current_Team <- "Arsenal"
 arsenal_data$`Date of Birth` <- as.integer(arsenal_data$`Date of Birth`)
 arsenal_data$`Date of Birth` <- as.Date(arsenal_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(arsenal_data)
+#View(arsenal_data)
 ########################################
 
 
@@ -73,11 +73,10 @@ rownames(Boremouth_data) <-NULL
 #Adding Team Name coulumn
 Boremouth_data$Current_Team <- "Boremouth"
 #Changing date format
-str(Boremouth_data)
 Boremouth_data$`Date of Birth` <- as.integer(Boremouth_data$`Date of Birth`)
 Boremouth_data$`Date of Birth` <- as.Date(Boremouth_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Boremouth_data)
+#View(Boremouth_data)
 ########################################
 
 ##############Burnley########
@@ -110,11 +109,10 @@ rownames(Burnley_data) <-NULL
 #Adding Team Name coulumn
 Burnley_data$Current_Team <- "Burnley"
 #Changing date format
-str(Burnley_data)
 Burnley_data$`Date of Birth` <- as.integer(Burnley_data$`Date of Birth`)
 Burnley_data$`Date of Birth` <- as.Date(Burnley_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Burnley_data)
+#View(Burnley_data)
 ########################################
 
 ##############Chelsea########
@@ -147,11 +145,10 @@ rownames(Chelsea_data) <-NULL
 #Adding Team Name coulumn
 Chelsea_data$Current_Team <- "Chelsea"
 #Changing date format
-str(Chelsea_data)
 Chelsea_data$`Date of Birth` <- as.integer(Chelsea_data$`Date of Birth`)
 Chelsea_data$`Date of Birth` <- as.Date(Chelsea_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Chelsea_data)
+#View(Chelsea_data)
 ########################################
 
 ##############Crystal_Palace########
@@ -182,13 +179,12 @@ Crystal_Palace_data <- Crystal_Palace_data[Crystal_Palace_data$Name !="Name",]
 #resetting index
 rownames(Crystal_Palace_data) <-NULL
 #Adding Team Name coulumn
-Crystal_Palace_data$Current_Team <- "Crystal_Palace"
+Crystal_Palace_data$Current_Team <- "Crystal Palace"
 #Changing date format
-str(Crystal_Palace_data)
 Crystal_Palace_data$`Date of Birth` <- as.integer(Crystal_Palace_data$`Date of Birth`)
 Crystal_Palace_data$`Date of Birth` <- as.Date(Crystal_Palace_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Crystal_Palace_data)
+#View(Crystal_Palace_data)
 ########################################
 
 ##############Everton########
@@ -221,11 +217,10 @@ rownames(Everton_data) <-NULL
 #Adding Team Name coulumn
 Everton_data$Current_Team <- "Everton"
 #Changing date format
-str(Everton_data)
 Everton_data$`Date of Birth` <- as.integer(Everton_data$`Date of Birth`)
 Everton_data$`Date of Birth` <- as.Date(Everton_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Everton_data)
+#View(Everton_data)
 ########################################
 
 ##############Hull_City########
@@ -256,13 +251,12 @@ Hull_City_data <- Hull_City_data[Hull_City_data$Name !="Name",]
 #resetting index
 rownames(Hull_City_data) <-NULL
 #Adding Team Name coulumn
-Hull_City_data$Current_Team <- "Hull_City"
+Hull_City_data$Current_Team <- "Hull City"
 #Changing date format
-str(Hull_City_data)
 Hull_City_data$`Date of Birth` <- as.integer(Hull_City_data$`Date of Birth`)
 Hull_City_data$`Date of Birth` <- as.Date(Hull_City_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Hull_City_data)
+#View(Hull_City_data)
 ########################################
 
 ##############Leicester########
@@ -295,11 +289,10 @@ rownames(Leicester_data) <-NULL
 #Adding Team Name coulumn
 Leicester_data$Current_Team <- "Leicester"
 #Changing date format
-str(Leicester_data)
 Leicester_data$`Date of Birth` <- as.integer(Leicester_data$`Date of Birth`)
 Leicester_data$`Date of Birth` <- as.Date(Leicester_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Leicester_data)
+#View(Leicester_data)
 ########################################
 
 ##############Liverpool########
@@ -332,11 +325,10 @@ rownames(Liverpool_data) <-NULL
 #Adding Team Name coulumn
 Liverpool_data$Current_Team <- "Liverpool"
 #Changing date format
-str(Liverpool_data)
 Liverpool_data$`Date of Birth` <- as.integer(Liverpool_data$`Date of Birth`)
 Liverpool_data$`Date of Birth` <- as.Date(Liverpool_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Liverpool_data)
+#View(Liverpool_data)
 ########################################
 
 ##############Manchester_City########
@@ -367,13 +359,12 @@ Manchester_City_data <- Manchester_City_data[Manchester_City_data$Name !="Name",
 #resetting index
 rownames(Manchester_City_data) <-NULL
 #Adding Team Name coulumn
-Manchester_City_data$Current_Team <- "Manchester_City"
+Manchester_City_data$Current_Team <- "Manchester City"
 #Changing date format
-str(Manchester_City_data)
 Manchester_City_data$`Date of Birth` <- as.integer(Manchester_City_data$`Date of Birth`)
 Manchester_City_data$`Date of Birth` <- as.Date(Manchester_City_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Manchester_City_data)
+#View(Manchester_City_data)
 ########################################
 
 ##############Manchester_United########
@@ -404,13 +395,12 @@ Manchester_United_data <- Manchester_United_data[Manchester_United_data$Name !="
 #resetting index
 rownames(Manchester_United_data) <-NULL
 #Adding Team Name coulumn
-Manchester_United_data$Current_Team <- "Manchester_United"
+Manchester_United_data$Current_Team <- "Manchester United"
 #Changing date format
-str(Manchester_United_data)
 Manchester_United_data$`Date of Birth` <- as.integer(Manchester_United_data$`Date of Birth`)
 Manchester_United_data$`Date of Birth` <- as.Date(Manchester_United_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Manchester_United_data)
+#View(Manchester_United_data)
 ########################################
 
 ##############Middlesbrough########
@@ -443,11 +433,10 @@ rownames(Middlesbrough_data) <-NULL
 #Adding Team Name coulumn
 Middlesbrough_data$Current_Team <- "Middlesbrough"
 #Changing date format
-str(Middlesbrough_data)
 Middlesbrough_data$`Date of Birth` <- as.integer(Middlesbrough_data$`Date of Birth`)
 Middlesbrough_data$`Date of Birth` <- as.Date(Middlesbrough_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Middlesbrough_data)
+#View(Middlesbrough_data)
 ########################################
 
 ##############Southampton########
@@ -480,11 +469,10 @@ rownames(Southampton_data) <-NULL
 #Adding Team Name coulumn
 Southampton_data$Current_Team <- "Southampton"
 #Changing date format
-str(Southampton_data)
 Southampton_data$`Date of Birth` <- as.integer(Southampton_data$`Date of Birth`)
 Southampton_data$`Date of Birth` <- as.Date(Southampton_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Southampton_data)
+#View(Southampton_data)
 ########################################
 
 ##############Stoke_City########
@@ -515,13 +503,12 @@ Stoke_City_data <- Stoke_City_data[Stoke_City_data$Name !="Name",]
 #resetting index
 rownames(Stoke_City_data) <-NULL
 #Adding Team Name coulumn
-Stoke_City_data$Current_Team <- "Stoke_City"
+Stoke_City_data$Current_Team <- "Stoke City"
 #Changing date format
-str(Stoke_City_data)
 Stoke_City_data$`Date of Birth` <- as.integer(Stoke_City_data$`Date of Birth`)
 Stoke_City_data$`Date of Birth` <- as.Date(Stoke_City_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Stoke_City_data)
+#View(Stoke_City_data)
 ########################################
 
 
@@ -555,11 +542,10 @@ rownames(Sunderland_data) <-NULL
 #Adding Team Name coulumn
 Sunderland_data$Current_Team <- "Sunderland"
 #Changing date format
-str(Sunderland_data)
 Sunderland_data$`Date of Birth` <- as.integer(Sunderland_data$`Date of Birth`)
 Sunderland_data$`Date of Birth` <- as.Date(Sunderland_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Sunderland_data)
+#View(Sunderland_data)
 ########################################
 
 ##############Swansea_City########
@@ -590,13 +576,12 @@ Swansea_City_data <- Swansea_City_data[Swansea_City_data$Name !="Name",]
 #resetting index
 rownames(Swansea_City_data) <-NULL
 #Adding Team Name coulumn
-Swansea_City_data$Current_Team <- "Swansea_City"
+Swansea_City_data$Current_Team <- "Swansea City"
 #Changing date format
-str(Swansea_City_data)
 Swansea_City_data$`Date of Birth` <- as.integer(Swansea_City_data$`Date of Birth`)
 Swansea_City_data$`Date of Birth` <- as.Date(Swansea_City_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Swansea_City_data)
+#View(Swansea_City_data)
 ########################################
 
 ##############Tottenham########
@@ -629,11 +614,10 @@ rownames(Tottenham_data) <-NULL
 #Adding Team Name coulumn
 Tottenham_data$Current_Team <- "Tottenham"
 #Changing date format
-str(Tottenham_data)
 Tottenham_data$`Date of Birth` <- as.integer(Tottenham_data$`Date of Birth`)
 Tottenham_data$`Date of Birth` <- as.Date(Tottenham_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Tottenham_data)
+#View(Tottenham_data)
 ########################################
 
 ##############Watford########
@@ -666,11 +650,10 @@ rownames(Watford_data) <-NULL
 #Adding Team Name coulumn
 Watford_data$Current_Team <- "Watford"
 #Changing date format
-str(Watford_data)
 Watford_data$`Date of Birth` <- as.integer(Watford_data$`Date of Birth`)
 Watford_data$`Date of Birth` <- as.Date(Watford_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(Watford_data)
+#View(Watford_data)
 ########################################
 
 ##############West_Brom########
@@ -701,13 +684,12 @@ West_Brom_data <- West_Brom_data[West_Brom_data$Name !="Name",]
 #resetting index
 rownames(West_Brom_data) <-NULL
 #Adding Team Name coulumn
-West_Brom_data$Current_Team <- "West_Brom"
+West_Brom_data$Current_Team <- "West Brom"
 #Changing date format
-str(West_Brom_data)
 West_Brom_data$`Date of Birth` <- as.integer(West_Brom_data$`Date of Birth`)
 West_Brom_data$`Date of Birth` <- as.Date(West_Brom_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(West_Brom_data)
+#View(West_Brom_data)
 ########################################
 
 ##############West_Ham########
@@ -738,11 +720,20 @@ West_Ham_data <- West_Ham_data[West_Ham_data$Name !="Name",]
 #resetting index
 rownames(West_Ham_data) <-NULL
 #Adding Team Name coulumn
-West_Ham_data$Current_Team <- "West_Ham"
+West_Ham_data$Current_Team <- "West Ham"
 #Changing date format
-str(West_Ham_data)
 West_Ham_data$`Date of Birth` <- as.integer(West_Ham_data$`Date of Birth`)
 West_Ham_data$`Date of Birth` <- as.Date(West_Ham_data$`Date of Birth`, origin = '1899-12-30') 
 
-View(West_Ham_data)
+#View(West_Ham_data)
 ########################################
+
+
+###########Merging all teams data
+players <- rbind(arsenal_data, Boremouth_data, Burnley_data, Chelsea_data, Crystal_Palace_data,
+                 Everton_data, Hull_City_data, Leicester_data, Liverpool_data, Manchester_City_data,
+                 Manchester_United_data, Middlesbrough_data, Southampton_data, Stoke_City_data,
+                 Sunderland_data, Swansea_City_data, Tottenham_data, Watford_data,
+                 West_Brom_data, West_Ham_data)
+
+View(players)
