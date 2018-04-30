@@ -769,8 +769,10 @@ View(players)
 # writing data in disk
 # write.csv(players, file = "PL_payers_16-17")
 
-#########################Data Viz##################
 
+
+
+######################### Data Viz ##################
 #Creating plot for number of players from different countries
 ggplot(players, aes(players$Nat)) + geom_bar()
 
@@ -796,6 +798,14 @@ players[players$BMI>25,]
 
 #number of players in position
 ggplot(players, aes(players$Pos)) + geom_bar()
+
+#plotting players age
+ggplot(players, aes(players$Age)) + geom_bar()
+
+players[players$Age>37,]
+
+#plotting age and weight
+ggplot(players, aes(x=players$Age, y=players$Weight)) + geom_point(aes(color=Age))
 
 
 
