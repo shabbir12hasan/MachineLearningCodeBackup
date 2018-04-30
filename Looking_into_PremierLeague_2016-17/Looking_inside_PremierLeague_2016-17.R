@@ -807,5 +807,10 @@ players[players$Age>37,]
 #plotting age and weight
 ggplot(players, aes(x=players$Age, y=players$Weight)) + geom_point(aes(color=Age))
 
+#checking team squad
+team_squad <- ggplot(players, aes(players$Current_Team)) + geom_bar(aes(fill=players$Current_Team))
+team_squad <-  team_squad + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+
 
 
