@@ -737,6 +737,8 @@ players <- rbind(arsenal_data, Boremouth_data, Burnley_data, Chelsea_data, Cryst
                  Sunderland_data, Swansea_City_data, Tottenham_data, Watford_data,
                  West_Brom_data, West_Ham_data)
 
+######### Removing previous club
+players <- players[,-7]
 
 ########### Rounding off players height to 2 decimal
 players$Height <- as.numeric(players$Height)
@@ -748,8 +750,6 @@ players$Weight <- as.numeric(players$Weight)
 ########## Calculating BMI of players
 players$BMI <- (players$Weight / players$Height^2)
 
-######### Removing previous club
-players <- players[,-7]
 
 # calculating age of players during start of the season 2016/17
 # season started at 13-08-2016. Calculating age of all players by that time
