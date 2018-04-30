@@ -2,6 +2,7 @@
 library(readxl)
 library(ggplot2)
 library(lubridate)
+library(dplyr)
 
 ############### importing and cleaning data files #######################
 #encoding = "UTF-16" for special character
@@ -750,16 +751,18 @@ players$BMI <- (players$Weight / players$Height^2)
 ######### Removing previous club
 players <- players[,-7]
 
-######### calculating age
-calc_age <- function(birthDate, refDate) {
+# calculating age of players during start of the season 2016/17
+# season started at 13-08-2016. Calculating age of all players by that time
+
+#function to calculate age
+calc_age <- function(birthDate) {
+  refDate="2016-08-13"
   period <- as.period(new_interval(birthDate, refDate), unit = "year")
-  period$year
+  return(period$year)
 }
 
-calc_age("1990-04-30", "2017-04-30")   # Calculate age at any date
-
-
-
+#creating age column
+players$Age <- sapply(players$`Date of Birth`, calc_age)
 
 View(players)
 
