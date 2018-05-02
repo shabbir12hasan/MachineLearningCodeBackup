@@ -764,8 +764,10 @@ calc_age <- function(birthDate) {
 #creating age column
 players$Age <- sapply(players$`Date of Birth`, calc_age)
 
-View(players)
+# Converting Pos to factor
+players$Pos <- as.factor(players$Pos)
 
+View(players)
 # writing data in disk
 # write.csv(players, file = "PL_payers_16-17")
 
@@ -781,18 +783,23 @@ ggplot(players, aes(players$Nat)) + geom_bar()
 players_noengland <- players[players$Nat!="ENG",]
 international_players <- ggplot(players_noengland, aes(players_noengland$Nat)) + geom_bar(aes(fill=players_noengland$Nat))
 international_players <-  international_players + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+international_players + labs(fill = "Nationality") +xlab("Countires") + ylab("Count")
 
 # Players height
-ggplot(players, aes(players$Height)) + geom_histogram()
+q <- ggplot(data = players, aes(x = Height)) + geom_histogram(binwidth = .025, aes(fill=Pos))
+q + facet_wrap(~Pos) + labs(fill="Position") + xlab("Height in meters")
 
-# Players weight
-ggplot(players, aes(players$Weight)) + geom_histogram()
 
 # comparing height and weight ratio
-ggplot(players, aes(x=players$Weight, y=players$Height)) + geom_point()
+p <- ggplot(players, aes(Height, Weight)) + geom_point(aes(color=Pos, shape=Pos))
+p + facet_grid(. ~ Pos)
+
+#plotting age and weight
+ggplot(players, aes(x=players$Age, y=players$Weight)) + geom_point(aes(color=Age)) + xlab("Age") + ylab("Weight in Kg")
+
 
 #Plotting BMI
-ggplot(players, aes(players$BMI)) + geom_histogram()
+ggplot(players, aes(players$BMI)) + geom_histogram() + xlab("Body Mass Index")
 
 players[players$BMI>25,]
 
@@ -804,8 +811,6 @@ ggplot(players, aes(players$Age)) + geom_bar()
 
 players[players$Age>37,]
 
-#plotting age and weight
-ggplot(players, aes(x=players$Age, y=players$Weight)) + geom_point(aes(color=Age))
 
 #checking team squad
 team_squad <- ggplot(players, aes(players$Current_Team)) + geom_bar(aes(fill=players$Current_Team))
