@@ -33,13 +33,13 @@ West Ham United<br>
 
 
 ### Data Wrangling
-Multiple data cleaning steps are involved in cleaning data, once data is imported and the same process we will operate on 20 teams.
+Multiple data cleaning steps are involved in cleaning data once data is imported, and same data cleaning process will be applied on 20 other data sets of all teams.
 
 Once we will clean data for all 20 teams then we will merge all records into one data frame and will perform operations on it.
 Our data would look like this:
 <p align="center"><img src="https://github.com/shabbir12hasan/MachineLearningCodeBackup/blob/master/Looking_into_PremierLeague_2016-17/images/raw_team_data.PNG" width="450"/></p>
 
-Now still we need to create few more variables which would help us to derive better results from our data, we would perform more operations in our whole data set of players.
+Now still we need to create few more variables which would help us to derive better results from our data, we would perform new operations in our whole data set of players.
 
 #### New variables:
   - First rounding off value of height to 2 decimal places, and convert it into continous value.
