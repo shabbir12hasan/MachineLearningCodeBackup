@@ -799,7 +799,7 @@ ggplot(players, aes(x=players$Age, y=players$Weight)) + geom_point(aes(color=Age
 
 
 #Plotting BMI
-ggplot(players, aes(players$BMI)) + geom_histogram() + xlab("Body Mass Index")
+ggplot(players, aes(players$BMI)) + geom_histogram() + xlab("Body mass index")
 
 players[players$BMI>25,]
 
