@@ -50,6 +50,16 @@ Now still we need to create few more variables which would help us to derive bet
 After changing and creating these variables, we would get clean data set and it would look like:
 <p align="center"><img src="https://github.com/shabbir12hasan/MachineLearningCodeBackup/blob/master/Looking_into_PremierLeague_2016-17/images/clean_team_data.PNG" width="450"/></p>
 
+##### Data dictionary:
+        - Name: Player's name
+        - Nat: Nationality
+        - Pos: preffered playing position
+        - Height: player's height in meters
+        - Weight: player's weight in kg
+        - Date of Birth: Birth date
+        - Current_Team: Team they are playing for
+        - BMI: Body mass index of players
+        - Age: player's age in years
 
 ### Data Visualization
 Once we have our data cleaned, we can look into the data and find out what's happening in it. We will create visuals and elucidate it.
