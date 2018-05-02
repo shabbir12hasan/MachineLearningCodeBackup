@@ -51,5 +51,12 @@ After changing and creating these variables, we would get clean data set and it 
 <p align="center"><img src="https://github.com/shabbir12hasan/MachineLearningCodeBackup/blob/master/Looking_into_PremierLeague_2016-17/images/clean_team_data.PNG" width="450"/></p>
 
 
-
+### Data Visualization
+Once we have our data cleaned, we can look into the data and find out what's happening in it. We will create visuals and elucidate it.
+  1)  Which countries have most players playing in premier league?
+  2)  Plotting height of players?
+  3)  Plotting weight of players?
+  4)  Plotting age of players?
+  4)  What does BMI index says?
+  5)  Comparing weight and age of players.
 
