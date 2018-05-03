@@ -791,11 +791,11 @@ q + facet_wrap(~Pos) + labs(fill="Position") + xlab("Height in meters")
 
 
 # comparing height and weight ratio
-p <- ggplot(players, aes(Height, Weight)) + geom_point(aes(color=Pos, shape=Pos))
+p <- ggplot(players, aes(Height, Weight)) + geom_point(aes(color=Pos, shape=Pos, size=6))
 p + facet_grid(. ~ Pos)
 
 #plotting age and weight
-ggplot(players, aes(x=players$Age, y=players$Weight)) + geom_point(aes(color=Age)) + xlab("Age") + ylab("Weight in Kg")
+ggplot(players, aes(x=players$Age, y=players$Weight)) + geom_point(aes(color=Age), size=5) + xlab("Age") + ylab("Weight in Kg")
 
 
 #Plotting BMI
