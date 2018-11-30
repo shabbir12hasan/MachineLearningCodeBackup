@@ -45,6 +45,10 @@ for i in range(num_episodes):
         env.render()
         action = np.argmax(Q[state, :] + np.random.randn(1, env.action_space.n) * (1. / (i + 1)))
 
+
+#reward is being 0 always
+
+
         # Using random noise
         # action = np.argmax(Q[state, :] + np.random.randn(1, env.action_space.n) / (i + 1))
 
