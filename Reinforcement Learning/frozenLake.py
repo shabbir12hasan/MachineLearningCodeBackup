@@ -6,6 +6,7 @@ from gym.envs.registration import register
 import time
 from IPython.display import clear_output
 
+
 register(
     id='FrozenLake-v3',
     entry_point='gym.envs.toy_text:FrozenLakeEnv',
