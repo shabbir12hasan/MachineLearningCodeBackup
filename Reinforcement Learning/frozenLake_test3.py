@@ -44,7 +44,7 @@ for i in range(num_episodes):
 
         observed_state, reward, done, info = env.step(action)
         Q[state, action] = (1 - learning_rate) * Q[state, action] + learning_rate * (reward + discount* np.max(Q[observed_state, :]))
-        state = observed_state
+        # state = observed_state
 
         if done: break
 
