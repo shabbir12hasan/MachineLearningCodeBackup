@@ -13,8 +13,6 @@ def main():
     env.render()
     env.step(2)
     env.render()
-    env.step(3)
-    env.render()
 
 if __name__ == '__main__':
     main()
