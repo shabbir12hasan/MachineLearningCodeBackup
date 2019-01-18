@@ -6,6 +6,18 @@ head(data)
 
 
 
+data$weekend_weekday <- as.factor(data$weekend_weekday)
+data$date <- as.Date(data$date)
+data$day_of_month <- as.factor(data$day_of_month)
+data$month <- as.factor(data$month)
+data$year <- as.factor(data$year)
+data$passenger_count <- as.factor(data$passenger_count)
+
+
+
+
+
+str(data)
 
 
 
