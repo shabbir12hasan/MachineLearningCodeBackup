@@ -242,6 +242,14 @@
       <column caption='Weekend Weekday' datatype='integer' name='[weekend_weekday]' role='measure' type='quantitative' />
       <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
       <column-instance column='[Number of Records]' derivation='Attribute' name='[attr:Number of Records:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[pickup_latitude]' derivation='None' name='[none:pickup_latitude:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[pickup_longitude]' derivation='None' name='[none:pickup_longitude:qk]' pivot='key' type='quantitative' />
+      <group hidden='true' name='[Exclusions (Pickup Latitude,Pickup Longitude)]' name-style='unqualified' user:auto-column='exclude'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[none:pickup_latitude:qk]' />
+          <groupfilter function='level-members' level='[none:pickup_longitude:qk]' />
+        </groupfilter>
+      </group>
       <layout dim-ordering='alphabetic' dim-percentage='0.434509' measure-ordering='alphabetic' measure-percentage='0.565491' show-structure='true' />
       <style>
         <style-rule element='mark'>
@@ -364,13 +372,29 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.0rgbqoy0538p3811906il1pgm9cx'>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
             <column caption='Fare Amount' datatype='real' name='[fare_amount]' role='measure' type='quantitative' />
             <column-instance column='[fare_amount]' derivation='None' name='[none:fare_amount:qk]' pivot='key' type='quantitative' />
             <column-instance column='[pickup_latitude]' derivation='None' name='[none:pickup_latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[pickup_longitude]' derivation='None' name='[none:pickup_longitude:qk]' pivot='key' type='quantitative' />
             <column aggregation='Avg' caption='Pickup Latitude' datatype='real' name='[pickup_latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' caption='Pickup Longitude' datatype='real' name='[pickup_longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.0rgbqoy0538p3811906il1pgm9cx].[Exclusions (Pickup Latitude,Pickup Longitude)]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='crossjoin'>
+                <groupfilter function='level-members' level='[none:pickup_latitude:qk]' />
+                <groupfilter function='level-members' level='[none:pickup_longitude:qk]' />
+              </groupfilter>
+              <groupfilter function='crossjoin'>
+                <groupfilter function='member' level='[none:pickup_latitude:qk]' member='41.366137999999999' />
+                <groupfilter function='member' level='[none:pickup_longitude:qk]' member='-73.137393000000003' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
           <filter class='quantitative' column='[federated.0rgbqoy0538p3811906il1pgm9cx].[none:pickup_longitude:qk]' included-values='in-range'>
             <min>-89.0</min>
             <max>-60.0</max>
@@ -378,13 +402,17 @@
           <slices>
             <column>[federated.0rgbqoy0538p3811906il1pgm9cx].[none:fare_amount:qk]</column>
             <column>[federated.0rgbqoy0538p3811906il1pgm9cx].[none:pickup_longitude:qk]</column>
+            <column>[federated.0rgbqoy0538p3811906il1pgm9cx].[Exclusions (Pickup Latitude,Pickup Longitude)]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
           <style-rule element='axis'>
-            <encoding attr='space' class='0' field='[federated.0rgbqoy0538p3811906il1pgm9cx].[none:pickup_longitude:qk]' field-type='quantitative' max='33540532.816784281' min='31324713.739858091' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
-            <encoding attr='space' class='0' field='[federated.0rgbqoy0538p3811906il1pgm9cx].[none:pickup_latitude:qk]' field-type='quantitative' max='5550614.439294124' min='4417623.4202569211' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0rgbqoy0538p3811906il1pgm9cx].[none:pickup_longitude:qk]' field-type='quantitative' max='32206226.049841262' min='31710445.90758656' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0rgbqoy0538p3811906il1pgm9cx].[none:pickup_latitude:qk]' field-type='quantitative' max='5137309.952787403' min='4854007.0143561456' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0rgbqoy0538p3811906il1pgm9cx].[sum:Number of Records:qk]' palette='orange_blue_diverging_10_0' reverse='true' type='interpolated' />
           </style-rule>
           <style-rule element='map-layer'>
             <format attr='enabled' id='tab_base' value='true' />
@@ -419,6 +447,9 @@
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0rgbqoy0538p3811906il1pgm9cx].[sum:Number of Records:qk]' />
+            </encodings>
             <style>
               <style-rule element='mark'>
                 <format attr='mark-labels-cull' value='true' />
@@ -531,6 +562,36 @@
         <cols>[federated.0rgbqoy0538p3811906il1pgm9cx].[none:distance_travelled:ok]</cols>
       </table>
     </worksheet>
+    <worksheet name='Sheet 7'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='clean_2' name='federated.0rgbqoy0538p3811906il1pgm9cx' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0rgbqoy0538p3811906il1pgm9cx'>
+            <column aggregation='Avg' caption='Dropoff Longitude' datatype='real' name='[dropoff_longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column caption='Fare Amount' datatype='real' name='[fare_amount]' role='measure' type='quantitative' />
+            <column-instance column='[dropoff_longitude]' derivation='None' name='[none:dropoff_longitude:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[fare_amount]' derivation='None' name='[none:fare_amount:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.0rgbqoy0538p3811906il1pgm9cx].[none:fare_amount:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+          </pane>
+        </panes>
+        <rows>[federated.0rgbqoy0538p3811906il1pgm9cx].[none:dropoff_longitude:qk]</rows>
+        <cols />
+      </table>
+    </worksheet>
   </worksheets>
   <windows source-height='30'>
     <window class='worksheet' name='Sheet 1'>
@@ -577,7 +638,7 @@
         </edge>
       </cards>
     </window>
-    <window class='worksheet' maximized='true' name='Sheet 3'>
+    <window class='worksheet' name='Sheet 3'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -595,6 +656,11 @@
           </strip>
           <strip size='31'>
             <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0rgbqoy0538p3811906il1pgm9cx].[sum:Number of Records:qk]' type='color' />
           </strip>
         </edge>
       </cards>
@@ -669,6 +735,28 @@
         <edge name='right'>
           <strip size='160'>
             <card pane-specification-id='0' param='[federated.0rgbqoy0538p3811906il1pgm9cx].[none:fare_amount:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+    <window class='worksheet' maximized='true' name='Sheet 7'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
           </strip>
         </edge>
       </cards>
