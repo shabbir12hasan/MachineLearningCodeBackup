@@ -12,35 +12,22 @@ word_digit_map =  { "A":2, "D":3, "G":4, "J":5, "M":6, "P":7,        "T":8 , "W"
                    }
 
 
-
-
-
 digit_word_map = {
-
-                    2: "ABC",
-                    3: "DEF",
-                    4: "GHI",
-                    5: "JKL",
-                    6: "MNO",
-                    7: "PQRS",
-                    8: "TUV",
-                    9: "WXYZ"
+                2: ["A", "B", "C"],
+                3: ["D", "E", "F"],
+                4: ["G", "H", "I"],
+                5: ["J", "K", "L"],
+                6: ["M", "N", "O"],
+                7: ["P", "Q", "R", "S"],
+                8: ["T", "U", "V"],
+                9: ["W", "X", "Y", "Z"]
                  }
-
 
 
 def digit_word_play(input_digit):
     #digit_word_map.get(2)
     brone_digit = input_digit.split("0")
-
-
-
-
-digit_word_play("0475110550")
-
-
-
-
+# digit_word_play("0475110550")
 
 
 
@@ -51,13 +38,54 @@ def conv_word_digit(input_word):
     return digit_list
 
 
-def conv_digit_word(input_digit):
-    word_list = []
-    for digit in input_digit:
-        for char, digi in word_digit_map.items():
-            if str(digi) == str(digit):
-                word_list.append(char)
-    return word_list
+# def conv_digit_word(input_digit):
+#     digit_dict = {}
+#     for x in digit_word_map:
+#         if x == 7:
+#             print(digit_word_map[x].split())
 
-print(conv_word_digit("HELL"))
-print(conv_digit_word("7511"))
+    # return digit_dict[digit]
+
+# print(conv_word_digit("HELL"))
+# print(conv_digit_word("752"))
+
+#
+A = ['p','q','r','s']
+B = ['t','u','v']
+C = ['w','x','y','z']
+D = ['i','j','l']
+#
+import itertools
+
+def create_product():
+    prod_li = list(itertools.product(A, B, C, D))
+    for i in prod_li:
+        print(''.join(i))
+
+#1
+# print(list(itertools.product(A, B, C, D)))
+
+
+
+
+def create_list(inp):
+    d={}
+    for i in inp.strip():
+        d["list_{}".format(i)] = (digit_word_map[int(i)])
+    return d
+
+# print(create_list("12"))
+
+
+def create_prod(inp):
+    i = inp.strip()
+    print(i)
+
+
+# print(create_product("345"))
+
+
+prod_li = list(itertools.product(A, B, C, D))
+
+
+
